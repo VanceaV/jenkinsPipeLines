@@ -2,4 +2,9 @@ node {
    stage("Code Check out"){
 		git 'https://github.com/derekhcchou/UtopiaAirline_Counter.git'
    }
+   
+   }
+   stage("Compile-Package"){
+       sh script: 'mvn clean install'
+   }
 }
