@@ -2,8 +2,7 @@ node {
    stage("Code Check out"){
 		git 'https://github.com/derekhcchou/UtopiaAirline_Agent.git'
    }
-   
-   }
+  
    stage("Compile-Package"){
        sh script: 'mvn clean install'
    }
