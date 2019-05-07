@@ -14,8 +14,12 @@ node {
         }
    }
    
- 
-    
+   
+   stage("Create-Agent-Image"){
+		git 'https://github.com/VanceaV/jenkinsPipeLines.git'
+   
+   }
+     
 }
 
 
