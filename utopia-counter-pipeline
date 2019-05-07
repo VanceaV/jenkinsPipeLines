@@ -1,1 +1,5 @@
-
+node {
+   stage("Code Check out"){
+		git https://github.com/derekhcchou/UtopiaAirline_Counter.git
+   }
+}
