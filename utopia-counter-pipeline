@@ -17,7 +17,7 @@ node {
    
    stage("Create-Agent-Image"){
 		git 'https://github.com/VanceaV/jenkinsPipeLines.git'
-		sh script: 'docker build vanceav/travel-counter:latest -f DockerFileCounter .'
+		sh script: 'docker build -t vanceav/travel-counter:latest -f DockerFileCounter .'
    
    }
      
