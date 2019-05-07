@@ -14,9 +14,17 @@ node {
         }
    }
    
-   stage("Create-Agent-Image"){
-		
-		sh script: 'sudo docker build -t vanceav/travel-agent:latest -f DockerfileAgent .'
    
+   
+   dir('UtopiaAirline_Agent') {
+   
+		stage("Create-Agent-Image"){
+ 
+			git 'https://github.com/VanceaV/jenkinsPipeLines.git'
+		
+			sh script: 'sudo docker build -t vanceav/travel-agent:latest -f DockerfileAgent .'
+   
+		}
    }
+ 
 }

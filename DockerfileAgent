@@ -2,7 +2,7 @@ FROM openjdk:8-jdk-alpine
 
 VOLUME /tmp
 
-ADD /UtopiaAirline_Agent/target/UtopiaProject-0.0.1-SNAPSHOT.jar app.jar
+ADD /target/UtopiaProject-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 8080
 
