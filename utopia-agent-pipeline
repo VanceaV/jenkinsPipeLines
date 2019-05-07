@@ -5,6 +5,7 @@ node {
   
    stage("Compile-Package"){
        sh script: 'mvn clean install'
+	   sh script: 'sudo docker build -t vanceav/travel-agent:latest -f DockerfileAgent .'
    }
    
    stage ("SonarQube-Analysys"){
@@ -14,17 +15,5 @@ node {
         }
    }
    
-   
-   
-   dir('UtopiaAirline_Agent') {
-   
-		stage("Create-Agent-Image"){
- 
-			git 'https://github.com/VanceaV/jenkinsPipeLines.git'
-		
-			sh script: 'sudo docker build -t vanceav/travel-agent:latest -f DockerfileAgent .'
-   
-		}
-   }
  
 }

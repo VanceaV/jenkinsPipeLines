@@ -5,6 +5,7 @@ node {
    
    stage("Compile-Package"){
        sh script: 'mvn clean install'
+	   sh script: 'sudo docker build -t vanceav/travel-counter:latest -f DockerfileCounter .'
    }
    
    stage ("SonarQube-Analysys"){
@@ -12,15 +13,7 @@ node {
             
              sh script: 'mvn sonar:sonar'
         }
-   }
-   
-   
-   stage("Create-Count-Docker-Image"){
-		
-		sh script: 'sudo docker build -t vanceav/travel-counter:latest -f DockerfileCounter .'
-   
-   }
-     
+   }  
 }
 
 
