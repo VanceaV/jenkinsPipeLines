@@ -6,6 +6,14 @@ node {
    stage("Compile-Package"){
        sh script: 'mvn clean install'
    }
+   
+   stage ("SonarQube-Analysys"){
+        withSonarQubeEnv("sonorQube"){
+            
+             sh script: 'mvn sonar:sonar'
+        }
+   }
+    
 }
 
 
