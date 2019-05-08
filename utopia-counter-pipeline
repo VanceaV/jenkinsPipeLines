@@ -26,16 +26,30 @@ node {
 	    
    }
    
+  
+   
+   
+   
+   
+   
    
    
    stage("Push-Docker-Image"){
    
-		docker.withRegistry("443611426531.dkr.ecr.us-east-1.amazonaws.com", "ecr.us-east-1:travel-counter") {
+   withAWS(region:'us-east-1',credentials:'aws-credentials') {
+
+                docker.withRegistry("443611426531.dkr.ecr.us-east-1.amazonaws.com", "ecr.us-east-1:travel-counter") {
     
 			
 			docker.image("travel-counter:latest").push()
 		}
-  	
+
+                
+		}
+
+   
+   
+		
 	}   
    
   
