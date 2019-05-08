@@ -36,20 +36,10 @@ node {
    
    stage("Push-Docker-Image"){
    
-   
-
-                docker.withRegistry("https://443611426531.dkr.ecr.us-east-1.amazonaws.com", "ecr.us-east-1:travel-counter") {
-    
-			
-			docker.image("travel-counter").push('latest')
+				 sh script: 'docker push 443611426531.dkr.ecr.us-east-1.amazonaws.com/travel-counter:latest'
 		}
 
-                
-		
 
-   
-   
-		
 	}   
    
   
