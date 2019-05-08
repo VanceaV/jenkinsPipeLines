@@ -36,6 +36,8 @@ node {
    
    stage("Push-Docker-Image"){
    
+				sh script: 'aws ecr get-login --region us-east-1'
+   
 				 sh script: 'docker push 443611426531.dkr.ecr.us-east-1.amazonaws.com/travel-counter:latest'
 		}
 
