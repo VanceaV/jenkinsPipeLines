@@ -28,13 +28,12 @@ node {
    
    
    
-   
    stage("Push-Docker-Image"){
    
-		docker.withRegistry("443611426531.dkr.ecr.us-east-1.amazonaws.com", "ecr.us-east-1:travel-agent") {
+		docker.withRegistry("443611426531.dkr.ecr.us-east-1.amazonaws.com", "ecr.us-east-1:travel-counter") {
     
 			sh "cat /root/.dockercfg" 
-			docker.image("my-image:latest").push()
+			docker.image("travel-counter:latest").push()
 		}
   	
 	}   
