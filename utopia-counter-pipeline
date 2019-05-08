@@ -19,32 +19,18 @@ node {
    
    stage("Build-Docker-Image"){
       
-	   sh script: 'sudo docker build -t travel-counter -f DockerfileCounter .'
-	   
-	   sh script: 'docker tag travel-counter:latest 443611426531.dkr.ecr.us-east-1.amazonaws.com/travel-counter:latest'
-	   
-	    
+	   sh script: 'sudo docker build -t vanceav/travel-counter -f DockerfileCounter .'
+	       
    }
    
   
-   
-   
-   
-   
-   
-   
-   
    stage("Push-Docker-Image"){
    
-				sh script: 'aws ecr get-login --region us-east-1'
-   
-				 sh script: 'docker push 443611426531.dkr.ecr.us-east-1.amazonaws.com/travel-counter:latest'
+		withDockerRegistry([ credentialsId: "docker-hub", url: "" ]) {
+			sh 'docker push vanceav/travel-counter:latest'
 		}
+	}
 
-
-	  
-   
-  
 }
 
 
