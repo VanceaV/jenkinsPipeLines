@@ -5,32 +5,25 @@ node {
    
    stage("Compile-Package"){
        sh script: 'mvn clean install'
-	   sh script: 'sudo docker build -t travel-counter:latest -f DockerfileCounter .'
-	   
-	   
-	   docker.withRegistry('docker.io', 'docker-hub'){
-			
-			sh script: 'sudo docker tag travel-counter vanceav/travel-counter:latest'
-			
-			sh script: 'sudo docker push vanceav/travel-counter:latest'
-			
-			
-	   }
-	   
-	   
-	   
-	   
-	   
-	  
 	   
    }
    
+  
    stage ("SonarQube-Analysys"){
         withSonarQubeEnv("sonorQube"){
             
              sh script: 'mvn sonar:sonar'
         }
    }  
+   
+   
+   stage("Build-Docker-Image"){
+      
+	   sh script: 'sudo docker build -t travel-counter:latest -f DockerfileCounter .'
+	    
+   }
+   
+   
 }
 
 
