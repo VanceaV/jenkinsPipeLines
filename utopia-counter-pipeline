@@ -29,17 +29,14 @@ node {
    
 		sh script: 'sudo docker tag travel-counter:latest  vanceav/travel-counter:latest'
       
-	   sh script: 'sudo docker push vanceav/travel-counter:latest'
+	   sh script: 'sudo docker push vanceav/travel-counter'
 	   }
 	    
    }
    
    
    
-   
-   
-   
-   
+ 
 }
 
 
