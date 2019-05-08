@@ -8,7 +8,7 @@ node {
 	   sh script: 'sudo docker build -t vanceav/travel-counter:latest -f DockerfileCounter .'
 	   
 	   
-	   docker.withRegistry('https://registry.hub.docker.io', 'docker-hub'){
+	   docker.withRegistry('https://hub.docker.com', 'docker-hub'){
 			sh script: 'sudo docker push vanceav/travel-counter:latest'
 			
 	   }
