@@ -23,6 +23,22 @@ node {
 	    
    }
    
+   stage("Push-Docker-Image"){
+   
+		docker.withRegistry('https://registry.hub.docker.com','docker-hub'){
+   
+		sh script: 'sudo docker tag travel-counter:latest  vanceav/travel-counter:latest'
+      
+	   sh script: 'sudo docker push vanceav/travel-counter:latest'
+	   }
+	    
+   }
+   
+   
+   
+   
+   
+   
    
 }
 
