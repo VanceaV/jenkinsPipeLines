@@ -20,7 +20,7 @@ node {
    stage("Build-Docker-Image"){
       
 	   sh script: 'sudo docker build -t travel-counter -f DockerfileCounter .'
-	   sh script: 'docker tag travel-agent 443611426531.dkr.ecr.us-east-1.amazonaws.com/travel-agent:latest'
+	   sh script: 'docker tag travel-agent 443611426531.dkr.ecr.us-east-1.amazonaws.com/travel-agent'
 	    
    }
    
