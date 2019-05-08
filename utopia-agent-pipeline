@@ -25,4 +25,16 @@ node {
 sh script: 'docker tag travel-agent 443611426531.dkr.ecr.us-east-1.amazonaws.com/travel-agent'
 
  https://registry.hub.docker.io
+ 
+ 
+ 
+ 
+ withAWS(region:'us-east-1',credentials:'aws-credentials') {
+
+                 def identity=awsIdentity();//Log AWS credentials
+				 
+				 sh script: 'docker push 443611426531.dkr.ecr.us-east-1.amazonaws.com/travel-counter'
+
+                
+		}
 

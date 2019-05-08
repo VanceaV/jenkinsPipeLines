@@ -26,18 +26,17 @@ node {
 	    
    }
    
+   
+   
+   
    stage("Push-Docker-Image"){
    
-   
-   
-		withAWS(region:'us-east-1',credentials:'aws-credentials') {
-
-                 def identity=awsIdentity();//Log AWS credentials
-				 
-				 sh script: 'docker push 443611426531.dkr.ecr.us-east-1.amazonaws.com/travel-counter'
-
-                
+		docker.withRegistry("443611426531.dkr.ecr.us-east-1.amazonaws.com", "ecr.us-east-1:travel-agent") {
+    
+			sh "cat /root/.dockercfg" 
+			docker.image("my-image:latest").push()
 		}
+  	
 	}   
    
   
