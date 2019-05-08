@@ -27,9 +27,9 @@ node {
    
 		docker.withRegistry('https://registry.hub.docker.com','docker-hub'){
    
-		sh script: 'sudo docker tag travel-counter:latest  vanceav/travel-counter:latest'
+		sh script: 'sudo docker tag travel-counter:latest  vanceav/travel-counter:1.0'
       
-	   sh script: 'sudo docker push vanceav/travel-counter'
+	   sh script: 'sudo docker push vanceav/travel-counter:1.0'
 	   }
 	    
    }
