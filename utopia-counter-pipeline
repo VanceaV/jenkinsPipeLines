@@ -32,7 +32,7 @@ node {
 
                  def identity=awsIdentity();//Log AWS credentials
 				 
-				 sh script: 'docker push 443611426531.dkr.ecr.us-east-1.amazonaws.com/travel-agent:latest'
+				 sh script: 'docker push 443611426531.dkr.ecr.us-east-1.amazonaws.com/travel-counter'
 
                 
 		}
