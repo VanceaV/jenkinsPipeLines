@@ -22,7 +22,7 @@ node {
    
  
 }
-
+sh script: 'docker tag travel-agent 443611426531.dkr.ecr.us-east-1.amazonaws.com/travel-agent'
 
  https://registry.hub.docker.io
 
