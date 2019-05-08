@@ -23,14 +23,12 @@ node {
 	       
    }
    
-  
    stage("Push-Docker-Image"){
    
 		withDockerRegistry([ credentialsId: "docker-hub", url: "" ]) {
 			sh 'docker push vanceav/travel-counter:latest'
 		}
 	}
-
 }
 
 

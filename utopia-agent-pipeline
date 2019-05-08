@@ -6,11 +6,6 @@ node {
    stage("Compile-Package"){
        sh script: 'mvn clean install'
 	   
-	   
-	   
-	   
-	   
-	   sh script: 'sudo docker build -t travel-agent -f DockerfileAgent .'
    }
    
    stage ("SonarQube-Analysys"){
@@ -20,21 +15,22 @@ node {
         }
    }
    
- 
-}
-sh script: 'docker tag travel-agent 443611426531.dkr.ecr.us-east-1.amazonaws.com/travel-agent'
-
- https://registry.hub.docker.io
- 
- 
- 
- 
- withAWS(region:'us-east-1',credentials:'aws-credentials') {
-
-                 def identity=awsIdentity();//Log AWS credentials
-				 
-				 sh script: 'docker push 443611426531.dkr.ecr.us-east-1.amazonaws.com/travel-counter'
-
-                
+   
+   
+   stage("Build-Docker-Image"){
+      
+	   sh script: 'sudo docker build -t vanceav/travel-agent -f DockerfileAgent .'
+	       
+   }
+   
+   stage("Push-Docker-Image"){
+   
+		withDockerRegistry([ credentialsId: "docker-hub", url: "" ]) {
+			sh 'docker push vanceav/travel-agent:latest'
 		}
+	}
+   
+ 
+
+}
 
