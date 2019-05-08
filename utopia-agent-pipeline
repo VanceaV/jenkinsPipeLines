@@ -10,7 +10,7 @@ node {
 	   
 	   
 	   
-	   sh script: 'sudo docker build -t vanceav/travel-agent:latest -f DockerfileAgent .'
+	   sh script: 'sudo docker build -t travel-agent -f DockerfileAgent .'
    }
    
    stage ("SonarQube-Analysys"){

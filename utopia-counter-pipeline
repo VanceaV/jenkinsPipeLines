@@ -19,24 +19,26 @@ node {
    
    stage("Build-Docker-Image"){
       
-	   sh script: 'sudo docker build -t travel-counter:latest -f DockerfileCounter .'
+	   sh script: 'sudo docker build -t travel-counter -f DockerfileCounter .'
+	   sh script: 'docker tag travel-agent:latest 443611426531.dkr.ecr.us-east-1.amazonaws.com/travel-agent:latest'
 	    
    }
    
    stage("Push-Docker-Image"){
    
-		docker.withRegistry('https://registry.hub.docker.com','docker-hub'){
-   
-		sh script: 'sudo docker tag travel-counter:latest  vanceav/travel-counter:1.0'
-      
-	   sh script: 'sudo docker push vanceav/travel-counter:1.0'
-	   }
-	    
-   }
    
    
+		withAWS(region:'us-east-1',credentials:'aws-credentials') {
+
+                 def identity=awsIdentity();//Log AWS credentials
+				 
+				 sh script: 'docker push 443611426531.dkr.ecr.us-east-1.amazonaws.com/travel-agent:latest'
+
+                
+		}
+	}   
    
- 
+  
 }
 
 
