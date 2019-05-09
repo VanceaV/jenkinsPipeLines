@@ -1,0 +1,13 @@
+stage('Create Utopia ECS'){
+
+
+
+     withAWS(region:'us-east-1',credentials:'aws-credentials') {
+
+                  def identity=awsIdentity();//Log AWS credentials
+
+
+                  sh label: '', script: 'aws --region us-east-1 cloudformation create-stack --stack-name CreateUtopiaECS --template-url https://s3.amazonaws.com/utopia-ecs/Temp.yml'
+
+    }
+ }
