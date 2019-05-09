@@ -10,7 +10,7 @@ stage('Create Utopia ECS'){
                   def identity=awsIdentity();//Log AWS credentials
 
 
-                  sh label: '', script: 'aws --region us-east-1 cloudformation create-stack --stack-name CreateUtopiaECS --template-url https://s3.amazonaws.com/utopia-ecs/Temp.yml --parameters ParameterKey=KeyName,ParameterValue=Default ParameterKey=VpcId,ParameterValue=Default ParameterKey=SubnetId,ParameterValue=Default ParameterKey=DesiredCapacity,ParameterValue=2 ParameterKey=MaxSize,ParameterValue=5 ParameterKey=InstanceType,ParameterValue=Default'
+                  sh label: '', script: 'aws --region us-east-1 cloudformation create-stack --stack-name CreateUtopiaECS --template-url https://s3.amazonaws.com/utopia-ecs/Temp.yml --parameters ParameterKey=KeyName,ParameterValue=Default ParameterKey=VpcId,ParameterValue=Default ParameterKey=SubnetId,ParameterValue=Default ParameterKey=DesiredCapacity,ParameterValue=2 ParameterKey=MaxSize,ParameterValue=5 ParameterKey=InstanceType,ParameterValue=t2.medium'
 
     }
  }
