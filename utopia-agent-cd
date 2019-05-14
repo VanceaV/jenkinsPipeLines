@@ -9,10 +9,10 @@ stage('Create Utopia ECS'){
 
                   def identity=awsIdentity();//Log AWS credentials
 				  
-				  
+				Exists = sh(script: 'aws cloudformation describe-stacks --us-east-1  --stack-name CreateUtopiaECS')
 				  
 				 
-            if (sh label: '', script: 'aws cloudformation describe-stacks --us-east-1  --stack-name CreateUtopiaECS') {
+            if (Exists) {
                sh label: '', script: 'aws --region us-east-1 cloudformation create-stack --stack-name CreateUtopiaECS --template-url https://s3.amazonaws.com/utopia-ecs/Temp.yml --parameters ParameterKey=KeyName,ParameterValue=VV ParameterKey=VpcId,ParameterValue=vpc-9a75e3e0 ParameterKey=SubnetId,ParameterValue=\"subnet-1ed3a979\\,subnet-4f145461\\,subnet-544e5b1e\\,subnet-3a094f66\" ParameterKey=DesiredCapacity,ParameterValue=2 ParameterKey=MaxSize,ParameterValue=5 ParameterKey=InstanceType,ParameterValue=t2.medium --capabilities CAPABILITY_NAMED_IAM'
             } else {
                 sh label: '', script: 'aws ecs update-service --cluster utopia-jenkins --service CreateUtopiaECS-service-4ZIS1V74DPMQ --force-new-deployment'
