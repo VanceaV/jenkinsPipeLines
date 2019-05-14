@@ -9,8 +9,8 @@ stage('Create Utopia ECS'){
 
                   def identity=awsIdentity();//Log AWS credentials
 				  
-				Exists = sh(script: 'aws stack-exists --stack-name CreateUtopiaECS')
-				echo 'Exists'
+				Exists = sh(script: 'aws cloudformation stack-exists --stack-name CreateUtopiaECS')
+				echo ''
 				  
 				 
             if (Exists) {
